@@ -1,7 +1,7 @@
 name: Status
 on:
   schedule:
-    - cron:  '13 */4 * * *'
+    - cron:  '0/30 * * * *'
 jobs:
   tests:
     name: Checks
@@ -28,6 +28,6 @@ jobs:
           ADDON_USERNAME: ${{ secrets.ADDON_USERNAME }}
           ADDON_PASSWORD: ${{ secrets.ADDON_PASSWORD }}
           ADDON_PROFILE: ${{ secrets.ADDON_PROFILE }}
-        run: python -m unittest -v test_auth
+        run: python -m unittest discover -v test_auth
       - name: TEST TV guide
         run: python -m unittest -v test_epg.TestEpg.test_get_epg
